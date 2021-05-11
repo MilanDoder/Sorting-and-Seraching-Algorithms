@@ -22,6 +22,12 @@ public class SortingAndSerachingAlgorithms {
         int list[] =  new int[]{1,5,4,-4,10,60,6,23,0,42};
         System.out.println(Arrays.toString(list));
         selectionSort(list);
+        list =  new int[]{1,5,4,-4,10,60,6,23,0,42};
+        System.out.println("\nBubble sort: \n"+Arrays.toString(list));
+
+        bubbleSort(list);
+         
+        
 
     }
     
@@ -41,8 +47,20 @@ public class SortingAndSerachingAlgorithms {
                 }
             }
         }
+        System.out.println(Arrays.toString(listToSort));        
+    }
+    
+    public static void bubbleSort(int [] listToSort){
+        
+        for(int i=listToSort.length-1;i>0;i--){
+            for(int j=0;j<i;j++){
+                if(listToSort[j]>listToSort[j+1]){
+                    swap(listToSort, j, j+1);
+                }
+                
+            }
+        }
         System.out.println(Arrays.toString(listToSort));
-
         
     }
 }
