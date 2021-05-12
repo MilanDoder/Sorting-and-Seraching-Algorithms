@@ -63,4 +63,22 @@ public class SortingAndSerachingAlgorithms {
         System.out.println(Arrays.toString(listToSort));
         
     }
+    public static void bubbleSortWithEarlyStop(int []listToSort){
+        
+        for(int i= listToSort.length;i>0;i++){
+            
+            boolean swaped = false;
+            for(int j=0;j<i;j++){
+                if(listToSort[j]>listToSort[j+1]){
+                    swap(listToSort, j, j+1);
+                    swaped=true;
+                }
+            }
+            
+            if(!swaped)
+                break;
+        
+        }
+    
+    }
 }
