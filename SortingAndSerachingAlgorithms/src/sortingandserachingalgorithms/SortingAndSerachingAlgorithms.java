@@ -81,4 +81,17 @@ public class SortingAndSerachingAlgorithms {
         }
     
     }
+    public static void insertionSort(int[] listToSort){
+        for(int i=0;i<listToSort.length;i++){
+            
+            for(int j=i+1;j>0;j--){
+                if(listToSort[j]<listToSort[j-1]){
+                    swap(listToSort, j, j-1);
+                    
+                }else
+                    break;
+            }
+        
+        }
+    }
 }
