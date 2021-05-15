@@ -103,7 +103,7 @@ public class SortingAndSerachingAlgorithms {
          }
     }
 
-    private static void insertionSort(int[] listToSort, int increment) {
+    public static void insertionSort(int[] listToSort, int increment) {
         for(int i=0;i+increment<listToSort.length;i++){
             for(int j=i +increment;j-increment>=0;j=j-increment){
                 if(listToSort[j]<listToSort[j-increment]){
@@ -115,5 +115,67 @@ public class SortingAndSerachingAlgorithms {
             }
         }
 
+    }
+    
+    public static void split(String[] listToSort,String[] firstHalf, String[] secondHalf){
+        int secondHlafStartIndex = firstHalf.length;
+        
+        for(int index =0;index<listToSort.length;index++){
+            if(index <secondHlafStartIndex){
+                firstHalf[index] = listToSort[index];
+            }else{
+                secondHalf[index -secondHlafStartIndex]= listToSort[index];
+            }
+        }
+    
+    }
+    
+    public static void merge(String[] listToSort, String[] listFistHalf, String[] listSecondHalf){
+        int mergeIndex =0;
+        
+        int firstHalfIndex = 0;
+        int secondHalfINdex=0;
+        
+        while(firstHalfIndex<listFistHalf.length && secondHalfINdex<listSecondHalf.length){
+        
+            if(listFistHalf[firstHalfIndex].compareTo(listSecondHalf[secondHalfINdex])<0){
+                listToSort[mergeIndex] = listFistHalf[firstHalfIndex];
+                firstHalfIndex++;
+            }else if(secondHalfINdex< listSecondHalf.length){
+                listToSort[mergeIndex] = listSecondHalf[secondHalfINdex];
+                secondHalfINdex++;
+            }
+            mergeIndex++;     
+        }
+        
+        if(firstHalfIndex<listToSort.length){
+            while (mergeIndex<listToSort.length){
+                listToSort[mergeIndex++] = listFistHalf[firstHalfIndex++];
+            }
+        }
+        
+                if(secondHalfINdex<listToSort.length){
+            while (mergeIndex<listToSort.length){
+                listToSort[mergeIndex++] = listSecondHalf[secondHalfINdex++];
+            }
+        }
+    }
+    
+    public static void mergeSort(String[] listToSort){
+        if(listToSort.length==1)
+            return;
+        
+        int mid = listToSort.length/2 + listToSort.length%2;
+        
+        String [] listFirstHalf = new String[mid];
+        String[] listSecondHalf = new String[listToSort.length-mid];
+        
+        split(listToSort, listFirstHalf, listSecondHalf);
+    
+        mergeSort(listFirstHalf);
+        mergeSort(listSecondHalf);
+        
+        merge(listToSort, listFirstHalf, listSecondHalf);
+        
     }
 }
