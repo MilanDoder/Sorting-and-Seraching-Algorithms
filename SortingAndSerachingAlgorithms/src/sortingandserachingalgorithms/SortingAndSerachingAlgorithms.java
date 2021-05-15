@@ -25,13 +25,17 @@ public class SortingAndSerachingAlgorithms {
         list =  new int[]{1,5,4,-4,10,60,6,23,0,42};
         System.out.println("\nBubble sort: \n"+Arrays.toString(list));
 
-       // bubbleSort(list);
+        bubbleSort(list);
         
         String[] lists = new String[]{"Fione","Dora","Alex","Jeff","Elise","Irene","Gerald","Ben"};
         quickSort(lists, 0, lists.length-1);
                 System.out.println("\nBubble sort: \n"+Arrays.toString(lists));
                 
         System.out.println("Index of 60 is: "+  linaerSearch(list, 60));
+        
+        System.out.println("Index of 60 is: "+  binarySearch(list, 60));
+
+        
 
          
         
@@ -242,5 +246,27 @@ public class SortingAndSerachingAlgorithms {
         
         
         return result;
+    }
+    
+    //O(log N)
+    public static int binarySearch(int [] list, int target){
+        int low =0;
+        int high = list.length-1;
+        
+        while(low<= high){
+        
+            int mid =  (low + high)/2;
+            
+            
+            if(list[mid]==target){
+                return mid;
+            }else if(list[mid]<target){
+                low = mid+1;
+            }else{
+                high = mid-1;
+            }
+           
+        }
+        return -1;
     }
 }
