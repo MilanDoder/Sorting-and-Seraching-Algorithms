@@ -94,4 +94,26 @@ public class SortingAndSerachingAlgorithms {
         
         }
     }
+    public static void shellSort(int[] listToSort){
+         int increment = listToSort.length /2;
+         
+         while(increment>1){
+             insertionSort(listToSort,increment);
+             increment= increment /2;
+         }
+    }
+
+    private static void insertionSort(int[] listToSort, int increment) {
+        for(int i=0;i+increment<listToSort.length;i++){
+            for(int j=i +increment;j-increment>=0;j=j-increment){
+                if(listToSort[j]<listToSort[j-increment]){
+                    swap(listToSort, j, j-increment);
+                
+                }else{
+                    break;
+                }
+            }
+        }
+
+    }
 }
