@@ -30,6 +30,8 @@ public class SortingAndSerachingAlgorithms {
         String[] lists = new String[]{"Fione","Dora","Alex","Jeff","Elise","Irene","Gerald","Ben"};
         quickSort(lists, 0, lists.length-1);
                 System.out.println("\nBubble sort: \n"+Arrays.toString(lists));
+                
+        System.out.println("Index of 60 is: "+  linaerSearch(list, 60));
 
          
         
@@ -227,5 +229,18 @@ public class SortingAndSerachingAlgorithms {
         quickSort(listToSort, low, pivodIndex-1);
         quickSort(listToSort, pivodIndex+1, high);
         
+    }
+    //O(n)
+    public static int linaerSearch(int[] list, int target){
+        int result =-1;
+        
+        for(int i=0;i<list.length;i++){
+            if(list[i]==target){
+                return i;
+            }
+        }
+        
+        
+        return result;
     }
 }
