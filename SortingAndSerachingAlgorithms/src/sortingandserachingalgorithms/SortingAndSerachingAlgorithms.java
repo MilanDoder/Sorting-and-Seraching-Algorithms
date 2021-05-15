@@ -31,9 +31,12 @@ public class SortingAndSerachingAlgorithms {
         quickSort(lists, 0, lists.length-1);
                 System.out.println("\nBubble sort: \n"+Arrays.toString(lists));
                 
-        System.out.println("Index of 60 is: "+  linaerSearch(list, 60));
+       // System.out.println("Index of 60 is: "+  linaerSearch(list, 60));
         
-        System.out.println("Index of 60 is: "+  binarySearch(list, 60));
+       // System.out.println("Index of 60 is: "+  binarySearch(list, 60));
+       
+         System.out.println("Index of 60 is: "+  jumpSearch(list, 60,3));
+
 
         
 
@@ -268,5 +271,27 @@ public class SortingAndSerachingAlgorithms {
            
         }
         return -1;
+    }
+    
+    //O(sqrt(N))
+    public static int jumpSearch(int[] list, int target, int jumpLenght){
+    
+            int i=0;
+            
+            while(list[i]<=target){
+                i = i+ jumpLenght;
+                
+                if(i>list.length)
+                    break;
+            }
+            
+            int startIndex = i -jumpLenght;
+            int endIndex = Math.min(i,list.length);
+            
+            for(int j= startIndex;j<endIndex;j++){
+                if(list[j]==target)
+                    return j;
+            }
+            return -1;
     }
 }
