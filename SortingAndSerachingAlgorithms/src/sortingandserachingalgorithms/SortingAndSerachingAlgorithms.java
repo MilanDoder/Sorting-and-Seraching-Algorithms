@@ -35,8 +35,9 @@ public class SortingAndSerachingAlgorithms {
         
        // System.out.println("Index of 60 is: "+  binarySearch(list, 60));
        
-         System.out.println("Index of 60 is: "+  jumpSearch(list, 60,3));
+         System.out.println("Index of 60 is: "+  jumpSearch(list, 10,3));
 
+         System.out.println("Index of 60 is: "+  interpolationSearch(list, 10));
 
         
 
@@ -55,6 +56,7 @@ public class SortingAndSerachingAlgorithms {
         list[iIndex] = list[jIndex];
         list[jIndex] = temp;    
     }
+        //O(N^2)
     public static void selectionSort(int[] listToSort){
         
         for(int i=0;i<listToSort.length;i++){
@@ -68,6 +70,7 @@ public class SortingAndSerachingAlgorithms {
         System.out.println(Arrays.toString(listToSort));        
     }
     
+    //O(N^2)
     public static void bubbleSort(int [] listToSort){
         
         for(int i=listToSort.length-1;i>0;i--){
@@ -99,6 +102,7 @@ public class SortingAndSerachingAlgorithms {
         }
     
     }
+    //O(N^2)
     public static void insertionSort(int[] listToSort){
         for(int i=0;i<listToSort.length;i++){
             
@@ -147,7 +151,7 @@ public class SortingAndSerachingAlgorithms {
         }
     
     }
-    
+    //O(N log N)
     public static void merge(String[] listToSort, String[] listFistHalf, String[] listSecondHalf){
         int mergeIndex =0;
         
@@ -293,5 +297,27 @@ public class SortingAndSerachingAlgorithms {
                     return j;
             }
             return -1;
+    }
+    
+    //O(log N)
+    public static int interpolationSearch(int[] list, int target){
+        int low =0;
+        int high =list.length-1;
+        
+        while(low<=high){
+            //
+            int mid = low+((target- list[low])*(high-low))/(list[high]-list[low]);
+        
+            if(list[mid]==target)
+                return mid;
+            else if(list[mid]<target)
+                low = mid+1;
+            else
+                high = mid -1;
+                     
+            
+        }
+    
+        return -1;
     }
 }
